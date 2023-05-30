@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/paoloyx/argo-appprojects-test
-    path: app-stacks/argocd
+    path: app-stacks/argo-cd
   destination:
     server: https://kubernetes.default.svc
     namespace: argo-cd
