@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-green
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/paoloyx/argo-appprojects-test
+    path: components/kube-green
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kube-green
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=false
