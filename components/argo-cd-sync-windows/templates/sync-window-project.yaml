@@ -16,8 +16,9 @@ spec:
 {{- range $sleepValues := .Values.sleepConfigs }}
 {{- if $sleepValues.enabled }}
   - kind: deny
-    schedule: {{ $sleepValues.argoCd.schedule }}
-    duration: {{ $sleepValues.argoCd.duration }}
+    schedule: {{ $sleepValues.argoCd.schedule | quote }}
+    duration: {{ $sleepValues.argoCd.duration | quote }}
+    timeZone: {{ $sleepValues.timeZone | quote }}
     {{- with $sleepValues.namespaces }}
     namespaces:
       {{- toYaml . | nindent 6 }}

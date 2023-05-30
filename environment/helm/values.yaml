@@ -4,12 +4,13 @@ clusterSleep:
   configs:
      ## Configuration for weekdays
      test-paolo:
+       timeZone: "Europe/Rome"
        enabled: true
        namespaces: *sleep-namespaces
        kubeGreen:
          weekdays: "1-5"
-         sleepAt: "13:50"
+         sleepAt: "16:10"
          #wakeUpAt: "14:10"
        argoCd:
-        schedule: '45 13 * * 1-5'
+        schedule: '05 16 * * 1-5'
         duration: 10m
