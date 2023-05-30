@@ -12,3 +12,9 @@ spec:
     server: '*'
   sourceRepos:
   - '*'
+  syncWindows:
+   - kind: deny
+     schedule: 25 11 * * 1-5
+     duration: 1h
+     namespaces:
+       - kube-system
