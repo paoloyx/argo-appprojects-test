@@ -5,7 +5,7 @@ clusterSleep:
      ## Configuration for weekdays
      test-paolo:
        timeZone: "Europe/Rome" # this is also the default, if not specified
-       enabled: false
+       enabled: true
        namespaces: *sleep-namespaces
        kubeGreen:
          weekdays: "1-5"
