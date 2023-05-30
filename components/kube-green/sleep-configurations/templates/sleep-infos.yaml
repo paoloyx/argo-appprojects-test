@@ -10,7 +10,7 @@ spec:
   weekdays: {{ $sleepValues.kubeGreen.weekdays | quote }}
   sleepAt: {{ $sleepValues.kubeGreen.sleepAt | quote }}
   wakeUpAt: {{ $sleepValues.kubeGreen.wakeUpAt | quote }}
-  timeZone: {{ $sleepValues.kubeGreen.timeZone | quote }}
+  timeZone: {{ $sleepValues.timeZone | default "Europe/Rome" | quote }}
   suspendCronJobs: true
 ---
 {{- end }}

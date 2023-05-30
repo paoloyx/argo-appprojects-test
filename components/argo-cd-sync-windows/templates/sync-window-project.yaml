@@ -18,7 +18,7 @@ spec:
   - kind: deny
     schedule: {{ $sleepValues.argoCd.schedule | quote }}
     duration: {{ $sleepValues.argoCd.duration | quote }}
-    timeZone: {{ $sleepValues.timeZone | quote }}
+    timeZone: {{ $sleepValues.timeZone | default "Europe/Rome" | quote }}
     {{- with $sleepValues.namespaces }}
     namespaces:
       {{- toYaml . | nindent 6 }}
