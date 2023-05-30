@@ -8,6 +8,6 @@ clusterSleep:
        enabled: true
        timeZone: "Europe/Rome" # this is also the default, if not specified
        weekdays: "1-5"
-       sleepAt: "18:10"
+       sleepAt: "18:15"
        duration: 2m
        namespaces: *sleep-namespaces
