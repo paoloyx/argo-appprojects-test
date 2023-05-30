@@ -10,10 +10,6 @@ spec:
   source:
     repoURL: https://github.com/paoloyx/argo-appprojects-test
     path: app-stacks/argocd
-    helm:
-      version: v3
-      values: |
-        sleepConfigs: {{- toYaml .Values.clusterSleep.configs | nindent 10}}
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
