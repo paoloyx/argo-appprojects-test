@@ -11,7 +11,7 @@ spec:
     helm:
       version: v3
       values: |
-        sleepConfigs: {{- toYaml .Values.clusterSleeps.configs | nindent 10}}
+        sleepConfigs: {{- toYaml .Values.clusterSleep.configs | nindent 10}}
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-green
