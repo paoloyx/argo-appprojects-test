@@ -1,0 +1,18 @@
+{{- range $sleepName, $sleepValues := .Values.sleepConfigs }}
+{{- if $sleepValues.enabled }}
+{{- range $namespace := $sleepValues.namespaces }}
+apiVersion: kube-green.com/v1alpha1
+kind: SleepInfo
+metadata:
+  name: {{ $sleepName}}
+  namespace: {{ $namespace}}
+spec:
+  weekdays: {{ $sleepValues.kubeGreen.weekdays | quote }}
+  sleepAt: {{ $sleepValues.kubeGreen.sleepAt | quote }}
+  wakeUpAt: {{ $sleepValues.kubeGreen.wakeUpAt | quote }}
+  timeZone: "Europe/Rome"
+  suspendCronJobs: true
+---
+{{- end }}
+{{- end }}
+{{- end }}

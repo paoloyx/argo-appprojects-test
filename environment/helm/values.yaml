@@ -1,0 +1,15 @@
+clusterSleep:
+  namespaces: &sleep-namespaces
+    - nginx
+  configs:
+     ## Configuration for weekdays
+     testPaolo:
+       enabled: true
+       namespaces: *sleep-namespaces
+       kubeGreen:
+         weekdays: "1-5"
+         sleepAt: "15:05"
+         #wakeUpAt: "15:25"
+       argoCd:
+        schedule: '00 15 * * 1-5'
+        duration: 30m

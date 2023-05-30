@@ -1,16 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-projects
+  name: kube-green
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/paoloyx/argo-appprojects-test
-    path: argo-projects
+    path: app-stacks/kube-green
+    helm:
+      version: v3
+      values: |
+        sleepConfigs: {{- toYaml .Values.clusterSleeps.configs | nindent 10}}
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: kube-system
+    namespace: kube-green
   syncPolicy:
     automated:
       selfHeal: true

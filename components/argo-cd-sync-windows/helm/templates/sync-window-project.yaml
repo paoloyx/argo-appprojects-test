@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: kube-green
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  sourceRepos:
+  - '*'
+  syncWindows:
+{{- range $sleepValues := .Values.sleepConfigs }}
+{{- if $sleepValues.enabled }}
+  - kind: deny
+    schedule: {{ $sleepValues.argoCd.schedule }}
+    duration: {{ $sleepValues.argoCd.duration }}
+    {{- with $sleepValues.namespaces }}
+    namespaces:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+{{- end }}
+{{- end }}

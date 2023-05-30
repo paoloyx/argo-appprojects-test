@@ -1,0 +1,15 @@
+sleepInfoConfigs:
+   ## Configuration for weekdays
+   dummyConfig:
+     enabled: true
+     namespaces:
+     - a
+     - b
+     - c
+     kubeGreen:
+       weekdays: "1-5"
+       sleepAt: "20:30"
+       wakeUpAt: "07:00"
+     argoCd:
+      schedule: '00 20 * * 1-5'
+      duration: 11h

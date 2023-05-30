@@ -1,0 +1,5 @@
+global:
+  targetRevision: ""
+
+argocd:
+  targetRevision: "HEAD"
