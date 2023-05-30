@@ -15,9 +15,11 @@ spec:
   syncWindows:
 {{- range $sleepValues := .Values.sleepConfigs }}
 {{- if $sleepValues.enabled }}
+{{- $sleepAt := mustToDate "15:04" $sleepValues.sleepAt | date_modify "5m" | date "15:04" }}
+{{- $schedule := printf "%s %s * * %s" (substr 3 5 $sleepAt) (substr 0 2 $sleepAt) $sleepValues.weekdays }}
   - kind: deny
-    schedule: {{ $sleepValues.argoCd.schedule | quote }}
-    duration: {{ $sleepValues.argoCd.duration | quote }}
+    schedule: {{ $schedule | quote }}
+    duration: {{ $sleepValues.duration | quote }}
     timeZone: {{ $sleepValues.timeZone | default "Europe/Rome" | quote }}
     {{- with $sleepValues.namespaces }}
     namespaces:

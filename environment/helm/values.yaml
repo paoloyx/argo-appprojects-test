@@ -3,14 +3,11 @@ clusterSleep:
     - nginx
   configs:
      ## Configuration for weekdays
+     ## TODO add explanations of single voices
      test-paolo:
+       enabled: true
        timeZone: "Europe/Rome" # this is also the default, if not specified
-       enabled: false
+       weekdays: "1-5"
+       sleepAt: "18:15"
+       duration: 10h
        namespaces: *sleep-namespaces
-       kubeGreen:
-         weekdays: "1-5"
-         sleepAt: "16:51"
-         #wakeUpAt: "16:10"
-       argoCd:
-        schedule: '50 16 * * 1-5'
-        duration: 10h

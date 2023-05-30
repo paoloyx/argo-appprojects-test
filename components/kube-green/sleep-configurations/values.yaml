@@ -1,15 +1,11 @@
 sleepConfigs:
-   ## Configuration for weekdays
-   dummyConfig:
+   dummy-config:
      enabled: false
+     timeZone: "Europe/Rome" # this is also the default, if not specified
+     weekdays: "1-5"
+     sleepAt: "23:50"
+     duration: 10h
      namespaces:
      - a
      - b
      - c
-     kubeGreen:
-       weekdays: "1-5"
-       sleepAt: "20:30"
-       wakeUpAt: "07:00"
-     argoCd:
-      schedule: '00 20 * * 1-5'
-      duration: 11h

@@ -7,11 +7,11 @@ metadata:
   name: {{ $sleepName}}
   namespace: {{ $namespace}}
 spec:
-  weekdays: {{ $sleepValues.kubeGreen.weekdays | quote }}
-  sleepAt: {{ $sleepValues.kubeGreen.sleepAt | quote }}
-  wakeUpAt: {{ $sleepValues.kubeGreen.wakeUpAt | quote }}
+  weekdays: {{ $sleepValues.weekdays | quote }}
+  sleepAt: {{ $sleepValues.sleepAt | quote  }}
+  wakeUpAt: {{ $sleepValues.wakeUpAt | quote }}
   timeZone: {{ $sleepValues.timeZone | default "Europe/Rome" | quote }}
-  suspendCronJobs: true
+  suspendCronJobs: false
 ---
 {{- end }}
 {{- end }}
