@@ -9,8 +9,8 @@ clusterSleep:
        namespaces: *sleep-namespaces
        kubeGreen:
          weekdays: "1-5"
-         sleepAt: "16:41"
+         sleepAt: "16:51"
          #wakeUpAt: "16:10"
        argoCd:
-        schedule: '40 16 * * 1-5'
-        duration: 5m
+        schedule: '50 16 * * 1-5'
+        duration: 10h
