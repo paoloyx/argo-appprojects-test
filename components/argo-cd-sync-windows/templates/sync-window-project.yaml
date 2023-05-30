@@ -15,7 +15,7 @@ spec:
   syncWindows:
 {{- range $sleepValues := .Values.sleepConfigs }}
 {{- if $sleepValues.enabled }}
-{{- $sleepAt := mustToDate "15:04" $sleepValues.sleepAt | date_modify "1m" | date "15:04" }}
+{{- $sleepAt := mustToDate "15:04" $sleepValues.sleepAt | date_modify "-1m" | date "15:04" }}
 {{- $schedule := printf "%s %s * * %s" (substr 3 5 $sleepAt) (substr 0 2 $sleepAt) $sleepValues.weekdays }}
   - kind: deny
     schedule: {{ $schedule | quote }}
