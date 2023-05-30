@@ -3,7 +3,7 @@ clusterSleep:
     - nginx
   configs:
      ## Configuration for weekdays
-     testPaolo:
+     test-paolo:
        enabled: true
        namespaces: *sleep-namespaces
        kubeGreen:
