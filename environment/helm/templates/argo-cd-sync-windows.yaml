@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argocd-sync-windows
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,11 @@ spec:
   project: default
   source:
     repoURL: https://github.com/paoloyx/argo-appprojects-test
-    path: app-stacks/argocd
+    path: components/argo-cd-sync-windows
+    helm:
+      version: v3
+      values: |
+        sleepConfigs: {{- toYaml .Values.clusterSleep.configs | nindent 10}}
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
