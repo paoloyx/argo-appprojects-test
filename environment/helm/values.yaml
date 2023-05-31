@@ -17,7 +17,7 @@ clusterSleep:
        # The weekdays in cron format. Required
        weekdays: "1-5"
        # The time at which sleep should start. Required
-       sleepAt: "10:30"
+       sleepAt: "10:40"
        # The duration of the sleep in seconds. Required
        durationSeconds: 120
        # The array of namespaces where sleep should occur. Required
