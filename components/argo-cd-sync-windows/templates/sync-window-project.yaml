@@ -17,7 +17,7 @@ spec:
   {{- $sleepEnabled := $sleepValues.enabled | default false }}
   {{- if $sleepEnabled }}
     {{- $sleepAt := mustToDate "15:04" $sleepValues.sleepAt | date_modify "-1m" | date "15:04" }}
-    {{- $duration := duration (add $sleepValues.duration 60) }}
+    {{- $duration := duration (add $sleepValues.durationSeconds 60) }}
     {{- $schedule := printf "%s %s * * %s" (substr 3 5 $sleepAt) (substr 0 2 $sleepAt) $sleepValues.weekdays }}
   - kind: deny
     schedule: {{ $schedule | quote }}
