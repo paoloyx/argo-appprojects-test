@@ -1,6 +1,7 @@
 {{- range $sleepName, $sleepValues := .Values.sleepConfigs }}
-{{- if $sleepValues.enabled }}
-{{- range $namespace := $sleepValues.namespaces }}
+  {{- $sleepEnabled := $sleepValues.enabled | default false }}
+  {{- if $sleepEnabled }}
+    {{- range $namespace := $sleepValues.namespaces }}
 apiVersion: kube-green.com/v1alpha1
 kind: SleepInfo
 metadata:
@@ -9,10 +10,9 @@ metadata:
 spec:
   weekdays: {{ $sleepValues.weekdays | quote }}
   sleepAt: {{ $sleepValues.sleepAt | quote  }}
-  wakeUpAt: {{ $sleepValues.wakeUpAt | quote }}
   timeZone: {{ $sleepValues.timeZone | default "Europe/Rome" | quote }}
-  suspendCronJobs: false
+  suspendCronJobs: {{ $sleepValues.suspendCronJobs | default false }}
 ---
-{{- end }}
-{{- end }}
+    {{- end }}
+  {{- end }}
 {{- end }}

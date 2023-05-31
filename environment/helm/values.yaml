@@ -1,13 +1,24 @@
+# Configuration for cluster sleeps
 clusterSleep:
+  # a canonical list of namespaces where we want sleeps to occur
+  # every single sleep config can override them, if needed
   namespaces: &sleep-namespaces
     - nginx
+  # A list of sleep configurations
   configs:
-     ## Configuration for weekdays
-     ## TODO add explanations of single voices
+     # config's name, will be used as reference in generated CRs (where applies)
      test-paolo:
+       # whether this configuration is enabled or not. Default value: false
        enabled: true
-       timeZone: "Europe/Rome" # this is also the default, if not specified
+       # whether cronJobs should be suspended. Default value: false
+       suspendCronJobs: false
+       # the timeZone for the sleep. Default value: "Europe/Rome"
+       timeZone: "Europe/Rome"
+       # The weekdays in cron format. Required
        weekdays: "1-5"
-       sleepAt: "18:15"
-       duration: 2m
+       # The time at which sleep should start. Required
+       sleepAt: "10:30"
+       # The duration of the sleep in seconds. Required
+       durationSeconds: 120
+       # The array of namespaces where sleep should occur. Required
        namespaces: *sleep-namespaces

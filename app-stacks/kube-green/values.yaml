@@ -3,8 +3,8 @@ sleepConfigs:
      enabled: false
      timeZone: "Europe/Rome" # this is also the default, if not specified
      weekdays: "1-5"
-     sleepAt: "16:30"
-     duration: 10h
+     sleepAt: "23:50"
+     duration: 120
      namespaces:
      - a
      - b
